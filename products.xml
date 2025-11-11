@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<products>
+
+    <product id="1">
+        <name>Wireless Mouse</name>
+        <price>799</price>
+        <description>Ergonomic mouse with 2.4GHz wireless connectivity.</description>
+    </product>
+
+    <product id="2">
+        <name>Bluetooth Speaker</name>
+        <price>1299</price>
+        <description>Portable speaker with deep bass and 10-hour battery life.</description>
+    </product>
+
+    <product id="3">
+        <name>USB Keyboard</name>
+        <price>499</price>
+        <description>Slim USB keyboard with smooth, comfortable keys.</description>
+    </product>
+
+    <product id="4">
+        <name>Smart Watch</name>
+        <price>1999</price>
+        <description>Fitness tracking smartwatch with heart rate monitoring.</description>
+    </product>
+
+    <product id="5">
+        <name>Power Bank 10000mAh</name>
+        <price>899</price>
+        <description>Fast-charging power bank with dual USB ports.</description>
+    </product>
+
+    <product id="6">
+        <name>Gaming Headset</name>
+        <price>1499</price>
+        <description>Noise-cancelling gaming headset with RGB lighting.</description>
+    </product>
+
+    <product id="7">
+        <name>External Hard Drive 1TB</name>
+        <price>3999</price>
+        <description>Portable 1TB hard drive with USB 3.0 support.</description>
+    </product>
+
+    <product id="8">
+        <name>LED Desk Lamp</name>
+        <price>599</price>
+        <description>Adjustable LED lamp with 3 brightness levels.</description>
+    </product>
+
+    <product id="9">
+        <name>Mobile Tripod Stand</name>
+        <price>349</price>
+        <description>Lightweight mini tripod for video recording.</description>
+    </product>
+
+    <product id="10">
+        <name>Mini Air Cooler</name>
+        <price>1799</price>
+        <description>Portable personal cooler with water tank.</description>
+    </product>
+
+    <product id="11">
+        <name>USB Rechargeable Fan</name>
+        <price>299</price>
+        <description>Compact fan with 3-speed settings for travel.</description>
+    </product>
+
+    <product id="12">
+        <name>Bluetooth Earbuds</name>
+        <price>999</price>
+        <description>Truly wireless earbuds with noise isolation.</description>
+    </product>
+
+    <product id="13">
+        <name>Smartphone Car Mount</name>
+        <price>449</price>
+        <description>Magnetic car mount with 360° rotation.</description>
+    </product>
+
+    <product id="14">
+        <name>Wireless Charger Pad</name>
+        <price>699</price>
+        <description>Qi-certified fast wireless charging pad.</description>
+    </product>
+
+    <product id="15">
+        <name>Action Camera</name>
+        <price>4999</price>
+        <description>Waterproof 4K action camera with wide-angle lens.</description>
+    </product>
+
+    <product id="16">
+        <name>Fitness Band</name>
+        <price>1299</price>
+        <description>Activity tracker with sleep monitoring and steps counter.</description>
+    </product>
+
+    <product id="17">
+        <name>Noise Cancelling Earphones</name>
+        <price>2199</price>
+        <description>In-ear ANC earphones with long battery life.</description>
+    </product>
+
+    <product id="18">
+        <name>Portable Projector</name>
+        <price>5999</price>
+        <description>Compact mini projector for movies and presentations.</description>
+    </product>
+
+    <product id="19">
+        <name>Smart LED Bulb (4-pack)</name>
+        <price>1499</price>
+        <description>Color-changing Wi-Fi bulbs compatible with voice assistants.</description>
+    </product>
+
+    <product id="20">
+        <name>Wireless Presenter</name>
+        <price>549</price>
+        <description>Presenter with laser pointer and slide controls.</description>
+    </product>
+
+    <product id="21">
+        <name>HD Webcam</name>
+        <price>1199</price>
+        <description>1080p webcam with built-in microphone for video calls.</description>
+    </product>
+
+    <product id="22">
+        <name>USB-C Hub</name>
+        <price>899</price>
+        <description>Multiport hub with HDMI, Ethernet, and USB-A ports.</description>
+    </product>
+
+    <product id="23">
+        <name>Portable SSD 512GB</name>
+        <price>6999</price>
+        <description>High-speed NVMe portable SSD with USB-C connection.</description>
+    </product>
+
+    <product id="24">
+        <name>Wireless Gaming Mouse</name>
+        <price>2599</price>
+        <description>High DPI mouse with programmable buttons and RGB.</description>
+    </product>
+
+    <product id="25">
+        <name>Mechanical Keyboard</name>
+        <price>3299</price>
+        <description>Compact mechanical keyboard with tactile switches.</description>
+    </product>
+
+    <product id="26">
+        <name>Smart Home Hub</name>
+        <price>2799</price>
+        <description>Central hub to control compatible smart home devices.</description>
+    </product>
+
+    <product id="27">
+        <name>Wireless Security Camera</name>
+        <price>2499</price>
+        <description>1080p outdoor camera with motion detection and night vision.</description>
+    </product>
+
+    <product id="28">
+        <name>Bluetooth Car Adapter</name>
+        <price>699</price>
+        <description>FM transmitter and Bluetooth receiver for older cars.</description>
+    </product>
+
+    <product id="29">
+        <name>Smart Plug (2-pack)</name>
+        <price>899</price>
+        <description>Voice-enabled smart plugs for remote appliance control.</description>
+    </product>
+
+    <product id="30">
+        <name>Cable Organizer Kit</name>
+        <price>249</price>
+        <description>Set of clips and ties to manage desk cables neatly.</description>
+    </product>
+
+    <product id="31">
+        <name>Ergonomic Laptop Stand</name>
+        <price>1199</price>
+        <description>Adjustable stand to raise laptop to eye level.</description>
+    </product>
+
+    <product id="32">
+        <name>Wireless Charging Power Bank</name>
+        <price>1999</price>
+        <description>Power bank with built-in wireless charging pad.</description>
+    </product>
+
+    <product id="33">
+        <name>RGB Light Strip (5m)</name>
+        <price>999</price>
+        <description>Addressable LED strip with remote and app control.</description>
+    </product>
+
+    <product id="34">
+        <name>Photo Printer</name>
+        <price>3699</price>
+        <description>Compact instant photo printer for smartphones.</description>
+    </product>
+
+    <product id="35">
+        <name>Desktop Microphone</name>
+        <price>1499</price>
+        <description>USB condenser mic for streaming and podcasting.</description>
+    </product>
+
+    <product id="36">
+        <name>Smart Thermostat</name>
+        <price>4499</price>
+        <description>Programmable thermostat with remote app control.</description>
+    </product>
+
+    <product id="37">
+        <name>Bluetooth Keyboard</name>
+        <price>1299</price>
+        <description>Compact Bluetooth keyboard with long battery life.</description>
+    </product>
+
+    <product id="38">
+        <name>VR Headset</name>
+        <price>8999</price>
+        <description>Entry-level VR headset compatible with smartphones.</description>
+    </product>
+
+    <product id="39">
+        <name>Smart Doorbell</name>
+        <price>3199</price>
+        <description>Video doorbell with two-way audio and motion alerts.</description>
+    </product>
+
+    <product id="40">
+        <name>Foldable Bluetooth Keyboard</name>
+        <price>1599</price>
+        <description>Portable foldable keyboard for tablets and phones.</description>
+    </product>
+
+</products>

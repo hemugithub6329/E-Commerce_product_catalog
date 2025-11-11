@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Product Catalog</title>
+
+    <!-- Linking CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <h1 class="heading">Product Catalog</h1>
+
+    <!-- Search filter (centered top) -->
+    <div class="search-wrap" role="search" aria-label="Search products">
+        <input id="search" type="search" placeholder="Search products by name or description..." aria-label="Search products">
+        <button id="clear-search" class="button" aria-label="Clear search">Clear</button>
+    </div>
+
+    <!-- new: controls (sort, price range, count) -->
+    <div class="controls-wrap" aria-hidden="false">
+        <div class="controls">
+            <label>
+                Sort:
+                <select id="sort-select" aria-label="Sort products">
+                    <option value="relevance">Relevance</option>
+                    <option value="price-asc">Price: Low → High</option>
+                    <option value="price-desc">Price: High → Low</option>
+                    <option value="name-asc">Name: A → Z</option>
+                    <option value="name-desc">Name: Z → A</option>
+                </select>
+            </label>
+
+            <label class="price-filter">
+                Price:
+                <input id="min-price" type="number" placeholder="Min" min="0" />
+                —
+                <input id="max-price" type="number" placeholder="Max" min="0" />
+            </label>
+
+            <div class="result-count" id="result-count" aria-live="polite">0 products</div>
+        </div>
+    </div>
+
+    <!-- Container for products -->
+    <div id="product-grid" class="grid"></div>
+
+    <script>
+        // store parsed products for filtering
+        let productsData = [];
+        let searchQuery = "";
+
+        // Filter/sort controls
+        const searchInput = document.getElementById("search");
+        const clearBtn = document.getElementById("clear-search");
+        const sortSelect = document.getElementById("sort-select");
+        const minPriceInput = document.getElementById("min-price");
+        const maxPriceInput = document.getElementById("max-price");
+        const resultCount = document.getElementById("result-count");
+
+        // Load XML file
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", "products.xml", true);
+        xhr.onreadystatechange = function () {
+            if (this.readyState === 4 && this.status === 200) {
+                loadProducts(this);
+            }
+        };
+        xhr.send();
+
+        function loadProducts(xml) {
+            const xmlDoc = xml.responseXML;
+            const products = xmlDoc.getElementsByTagName("product");
+            productsData = [];
+
+            for (let i = 0; i < products.length; i++) {
+                const id = products[i].getAttribute("id") || "";
+                const nameEl = products[i].getElementsByTagName("name")[0];
+                const priceEl = products[i].getElementsByTagName("price")[0];
+                const descEl = products[i].getElementsByTagName("description")[0];
+
+                const name = nameEl ? nameEl.textContent.trim() : "";
+                // safe parse price -> number; if missing use 0
+                const price = priceEl ? Number(priceEl.textContent.trim()) || 0 : 0;
+                const description = descEl ? descEl.textContent.trim() : "";
+
+                productsData.push({ id, name, price, description });
+            }
+
+            applyFilters();
+        }
+
+        function renderProducts(list) {
+            const grid = document.getElementById("product-grid");
+            resultCount.textContent = `${list.length} product${list.length !== 1 ? "s" : ""}`;
+            if (!list.length) {
+                grid.innerHTML = '<p style="text-align:center; color: #666; width:100%;">No products found.</p>';
+                return;
+            }
+
+            let html = "";
+            for (const p of list) {
+                html += `
+                    <div class="card" data-id="${p.id}">
+                        <h2>${escapeHtml(p.name)}</h2>
+                        <p class="price">${p.price}</p>
+                        <p class="desc">${escapeHtml(p.description)}</p>
+                    </div>
+                `;
+            }
+            grid.innerHTML = html;
+        }
+
+        // basic HTML escaping
+        function escapeHtml(str) {
+            return (str || "").replace(/[&<>"']/g, (m) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+        }
+
+        // apply search + price + sort
+        function applyFilters() {
+            const q = (searchQuery || "").trim().toLowerCase();
+            let filtered = productsData.filter(p => {
+                const textMatch = !q || p.name.toLowerCase().includes(q) || p.description.toLowerCase().includes(q) || String(p.price).includes(q);
+                const min = Number(minPriceInput.value) || 0;
+                const max = Number(maxPriceInput.value) || Infinity;
+                const priceMatch = p.price >= min && p.price <= max;
+                return textMatch && priceMatch;
+            });
+
+            // sort
+            const mode = sortSelect.value;
+            if (mode === "price-asc") filtered.sort((a,b)=>a.price - b.price);
+            else if (mode === "price-desc") filtered.sort((a,b)=>b.price - a.price);
+            else if (mode === "name-asc") filtered.sort((a,b)=>a.name.localeCompare(b.name));
+            else if (mode === "name-desc") filtered.sort((a,b)=>b.name.localeCompare(a.name));
+            // relevance -> keep original order
+
+            renderProducts(filtered);
+        }
+
+        // debounce helper
+        function debounce(fn, wait = 180) {
+            let t;
+            return (...args) => {
+                clearTimeout(t);
+                t = setTimeout(() => fn(...args), wait);
+            };
+        }
+
+        // wire up search input + controls
+        const debouncedSearch = debounce(e => {
+            searchQuery = e.target.value;
+            applyFilters();
+        }, 160);
+
+        searchInput.addEventListener("input", debouncedSearch);
+        clearBtn.addEventListener("click", () => {
+            searchInput.value = "";
+            minPriceInput.value = "";
+            maxPriceInput.value = "";
+            sortSelect.value = "relevance";
+            searchQuery = "";
+            searchInput.focus();
+            applyFilters();
+        });
+
+        sortSelect.addEventListener("change", applyFilters);
+        minPriceInput.addEventListener("input", debounce(applyFilters, 120));
+        maxPriceInput.addEventListener("input", debounce(applyFilters, 120));
+    </script>
+
+</body>
+</html>
